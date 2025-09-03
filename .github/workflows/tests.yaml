@@ -1,4 +1,4 @@
-name: Tests and lints for Sandbox (Python Edition)
+name: Tests and lints for GPIO Daemon Demo
 
 on:
   push:

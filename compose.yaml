@@ -1,10 +1,10 @@
 services:
-  sandbox-py:
+  demo-gpio-daemon:
     build:
       context: .
       dockerfile: container/Containerfile
-    container_name: sandbox-py
-    image: sandbox-py:latest
+    container_name: demo-gpio-daemon
+    image: demo-gpio-daemon:latest
     stdin_open: true
     tty: true
     volumes:

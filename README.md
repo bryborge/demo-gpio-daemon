@@ -1,6 +1,4 @@
-# Sandbox (Python Edition)
-
-A portable Python Development Environment for experimentation and glory.
+# GPIO Daemon Demo
 
 ## ⚙️ Dependencies
 
@@ -20,7 +18,7 @@ and running.
     That's it. If you want to drop into the container at a shell, run:
 
     ```sh
-    podman compose exec sandbox-py bash
+    podman compose exec demo-gpio-daemon bash
     ```
 
 2.  Install dependencies (inside the container):
