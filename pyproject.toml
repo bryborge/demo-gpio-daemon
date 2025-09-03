@@ -1,0 +1,60 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools >= 77.0.3"]
+
+[project]
+dependencies = []
+description = "A portable Python Development Environment for experimentation and glory."
+dynamic = ["version"]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+name = "sandbox-py"
+readme = "README.md"
+requires-python = ">= 3.11"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest >= 8.4.0",
+    "pytest-cov >= 6.2.0",
+    "pytest-mock >= 3.10.0",
+    "pytest-xdist >= 3.0.0",
+    "ruff >= 0.1.0",
+    "mypy >= 1.0.0",
+    "pre-commit >= 4.2.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--cov=.",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov"
+]
+
+[tool.ruff]
+lint.select = ["ALL"]
+# See: https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+lint.ignore = [
+    "COM812",   # prohibited-trailing-comma
+    "D105",     # undocumented-magic-method
+    "D203",     # one-blank-line-before-class
+    "D213",     # multi-line-summary-second-line
+    "D413",     # blank-line-after-last-section
+]
+line-length = 100
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/test_*.py" = [
+    "S101",     # pytest prefers plain assert
+]
+
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
