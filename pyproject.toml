@@ -3,7 +3,9 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools >= 77.0.3"]
 
 [project]
-dependencies = []
+dependencies = [
+    "gpiod>=2.3.0"
+]
 description = "A portable Python Development Environment for experimentation and glory."
 dynamic = ["version"]
 license = "MIT"
