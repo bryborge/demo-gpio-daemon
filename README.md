@@ -4,10 +4,9 @@ A UDP daemon that runs on Raspberry Pi to control GPIO pins remotely. This demo 
 
 ## ⚙️ Dependencies
 
+-   Python 3.11+
 -   [Podman](https://podman.io/) (for containerized development)
 -   Raspberry Pi with GPIO pins (for actual hardware control)
--   Python 3.11+
--   gpiod library
 
 ## 🔧 Up and Running
 
@@ -63,13 +62,13 @@ Use the test client to send commands:
 
 ```sh
 # Turn LED on
-python test_client.py "led power on"
+python scripts/test_client.py "led power on"
 
 # Turn LED off
-python test_client.py "led power off"
+python scripts/test_client.py "led power off"
 
 # Run demo (turns LED on, waits 2 seconds, turns off)
-python test_client.py demo
+python scripts/test_client.py demo
 ```
 
 Or send UDP packets directly:
@@ -82,44 +81,12 @@ echo "led power off" | nc -u 127.0.0.1 5005
 ### Hardware Setup
 
 Connect an LED to your Raspberry Pi:
-- Connect LED anode (longer leg) to GPIO pin 18
-- Connect LED cathode (shorter leg) to ground through a 220Ω resistor
+- Connect LED anode to GPIO pin 18
+- Connect LED cathode to ground through a 220Ω resistor
 
 ### Configuration
 
-Edit `config.ini` to change network settings or GPIO pins:
-
-```ini
-[NETWORK]
-udp_ip = 127.0.0.1
-udp_port = 5005
-
-[/dev/gpiochip4]
-power_pin = 12
-```
-
-## 🔧 Up and Running
-
-These instructions assume you have the above dependencies installed, configured,
-and running.
-
-1.  Build and run the container.
-
-    ```sh
-    podman compose up -d
-    ```
-
-    That's it. If you want to drop into the container at a shell, run:
-
-    ```sh
-    podman compose exec demo-gpio-daemon bash
-    ```
-
-2.  Install dependencies (inside the container):
-
-    ```sh
-    pip install -e .[dev]
-    ```
+Edit `config.ini` to change network settings or GPIO pins.
 
 ### ⚙️ Build System
 

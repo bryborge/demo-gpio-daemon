@@ -9,7 +9,7 @@ class Accessory:
     def __init__(self, cfg_section: str) -> None:
         """Initialize the accessory with configuration section."""
         self.cfg_section = cfg_section
-        self.power_pin = int(daemon.config[cfg_section]['power_pin'])
+        self.power_pin = int(daemon.config[cfg_section]["power_pin"])
         self.power_line = daemon.assert_out(self.power_pin, cfg_section)
 
     def power_on(self) -> None:
@@ -26,4 +26,4 @@ class LED(Accessory):
 
     def __init__(self) -> None:
         """Initialize the LED with the gpiochip4 configuration."""
-        super().__init__('/dev/gpiochip4')
+        super().__init__("/dev/gpiochip4")
