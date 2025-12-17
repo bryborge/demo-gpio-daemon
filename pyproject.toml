@@ -3,8 +3,10 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools >= 77.0.3"]
 
 [project]
-dependencies = []
-description = "A portable Python Development Environment for experimentation and glory."
+dependencies = [
+    "gpiod>=2.3.0"
+]
+description = "A UDP daemon that runs on Raspberry Pi to control GPIO pins remotely."
 dynamic = ["version"]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
